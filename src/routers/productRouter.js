@@ -1,7 +1,0 @@
-import express from 'express';
-
-const productRouter = express.Router();
-
-// router.post('/', )
-
-export default productRouter;
