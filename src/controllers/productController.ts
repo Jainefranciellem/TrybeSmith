@@ -8,6 +8,12 @@ async function create(req: Request, res: Response) {
   return res.status(201).json(product.data);
 }
 
+async function getAll(req: Request, res: Response) {
+  const getAllProduct = await productService.getAll();
+  return res.status(200).json(getAllProduct.data);
+}
+
 export default {
   create,
+  getAll,
 };
