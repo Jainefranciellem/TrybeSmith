@@ -1,6 +1,7 @@
-import { ServiceResponse } from 'src/types/serviceResponse';
+import { ServiceResponse } from '../types/serviceResponse';
 import ProductModel,
-{ ProductInputtableTypes, ProductSequelizeModel } from '../database/models/product.model';
+{ ProductInputtableTypes } from '../database/models/product.model';
+import { Product } from '../types/Product';
 
 async function create(product: ProductInputtableTypes):
 Promise<ServiceResponse<ProductInputtableTypes>> {
@@ -12,11 +13,11 @@ Promise<ServiceResponse<ProductInputtableTypes>> {
 }
 
 async function getAll():
-Promise<ServiceResponse<ProductSequelizeModel[]>> {
+Promise<ServiceResponse<Product[]>> {
   const getAllProduct = await ProductModel.findAll();
   return {
     status: 'SUCCESSFUL',
-    data: getAllProduct,
+    data: getAllProduct.map((product) => product.dataValues),
   };
 }
 
