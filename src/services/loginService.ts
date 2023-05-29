@@ -3,7 +3,7 @@ import UserModel from '../database/models/user.model';
 import { ServiceResponse } from '../types/serviceResponse';
 import jwtUtil from '../utils/jwtUtil';
 
-type LoginServiceResponse = ServiceResponse<{ token: string }>;
+export type LoginServiceResponse = ServiceResponse<{ token: string }>;
 
 async function login(username: string, password: string): Promise<LoginServiceResponse> {
   const user = await UserModel.findOne({ where: { username } });
